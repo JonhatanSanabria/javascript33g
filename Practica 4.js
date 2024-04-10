@@ -45,7 +45,7 @@ const phrase = "la mejor manera de aprender es practicando";
 console.log(phrase.length)
 console.log(phrase.split(" ").length)
 console.log(phrase.toUpperCase())
-console.log(phrase.replace("a", "4"))
+console.log(phrase.replaceAll("a", "4"))
 
 /* 
 se requiere: 
@@ -55,3 +55,26 @@ se requiere:
     obtener la misma frase pero en mayusculas
     obtener la misma frase pero con todas las letras "a" reemplazadas por un "4"
 */
+
+const countCharacters = (phrase) => {return phrase.length}
+
+const countLetters = (phrase) => {
+    let words = phrase.split(' ')
+    let lettersCount = 0
+    for (let word of words){
+        lettersCount+=word.length
+    }
+    return lettersCount
+}
+
+const countWords = (phrase) => {return phrase.split(' ').length}
+
+const toMayus = (phrase) => {return phrase.toUpperCase()}
+
+const replaceAWithFour = (phrase) => {return phrase.replaceAll("a", "4")}
+
+console.log(countCharacters(phrase))
+console.log(countLetters(phrase))
+console.log(countWords(phrase))
+console.log(toMayus(phrase))
+console.log(replaceAWithFour(phrase))
