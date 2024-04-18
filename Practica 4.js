@@ -57,6 +57,12 @@ se requiere:
 */
 
 const countCharacters = (phrase) => {return phrase.length}
+/*
+function  countCharacters(phrase){
+    let characters = phrase.length
+    return characters
+}
+*/
 
 const countLetters = (phrase) => {
     let words = phrase.split(' ')
@@ -78,3 +84,23 @@ console.log(countLetters(phrase))
 console.log(countWords(phrase))
 console.log(toMayus(phrase))
 console.log(replaceAWithFour(phrase))
+
+/*
+se requiere:
+    1.- conocer la cantidad de letras de una palabra dentro de la frase, la palabra se debe seleccionar por su posicion, saber la longitud de la palabra,
+    si preguntamos por una posicion que no existe en la frase, devolvemos un mensaje que devuelve un error
+    2.- de la frase, necesitamos eliminar una palabra en base a su posicion y recibir una frase sin la palabra borrada
+    3.- eliminar todas las palabras cortas de la frase considerando que una palabra corta tiene 3 caracteres o menos y debemos obtener la nueva frase sin palabras cortas
+*/
+const amountLetters = (phrase) => {
+    let array = phrase.split(" ")
+    return array
+}
+console.log(amountLetters(phrase))
+console.log(amountLetters(phrase)[5].length)
+if (amountLetters(phrase) != [0,6]){
+    console.log(`La posicion de la palabra no existe en la frase`)
+}else{
+    console.log(`Hay un total de ${amountLetters(phrase).length} letras en esa palabra`)
+}
+    
