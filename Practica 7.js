@@ -19,20 +19,24 @@ const users = [
 5.- Necesitamos saber la mayor edad
 6.- Necesitamos saber la menor edad
 */
-
-let fullNames = users.map(user => user.name + ' '+ user.lastname)
+users.forEach((item, index, array) => { 
+let fullNames = users.map(user => `${user.name} ${user.lastname}`)
 let maleUsers = users.filter(user => user.gender === 'Male')
 let femaleUsers = users.filter(user => user.gender === 'Female')
 let sumAge=users.reduce((sum, user) => sum + user.age ,0)
 let maxAge=Math.max(...users.map(user=>user.age))
 let minAge=Math.min(...users.map(user=>user.age))
 
-console.log(fullNames)
+console.log("Users list", fullNames)
 console.log("Males users list: ", maleUsers)
 console.log("Females users list: ", femaleUsers)
 console.log(`Promedio de edades: ${sumAge/users.length}`)
 console.log(`Mayor Edad: ${maxAge} años`)
 console.log(`Menor Edad: ${minAge} años`)
+})
 
-
-
+// funcion para crear un objeto de usuario a partir del nombre y apellido completo
+const createFullName = (fullNames) => {
+    let fullName = `${user.name} ${user.lastname}`
+    return fullName
+}
