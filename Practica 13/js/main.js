@@ -18,6 +18,36 @@ const koders = [
     {
         name: "Santiago",
         lastName: "Olivares"
+    }, 
+    {
+        name: "Isabel",
+        lastName: "Torres"
+    }
+]
+const koders2 = [
+    {
+        name: "Charles",
+        lastName: "Silva"
+    },
+    {
+        name: "Brenda",
+        lastName: "Santos"
+    },
+    {
+        name: "Ramiro",
+        lastName: "Gonzalez"
+    },
+    {
+        name: "Javier",
+        lastName: "Soto"
+    }, 
+    {
+        name: "Oliver",
+        lastName: "Castillo"
+    }, 
+    {
+        name: "Berenice",
+        lastName: "Prado"
     }
 ]
 
@@ -32,9 +62,13 @@ const getKodersList = (koderObject) => {
     return koderListItem;
 }
 
-let listWrapper = document.getElementById('list-wrapper')
-
-koders.forEach(koder => {
+const printKoders = (kodersArray, wrapperId) => {
+kodersArray.forEach(koder => {
+    let listWrapper = document.getElementById(wrapperId)
     let newKoder = getKodersList(koder)
     listWrapper.append(newKoder)
-});
+    console.log(newKoder)
+})
+}
+printKoders(koders, 'list-wrapper')
+printKoders(koders2, 'second-list-wrapper')
