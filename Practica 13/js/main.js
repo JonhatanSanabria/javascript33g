@@ -56,6 +56,7 @@ const getKodersList = (koderObject) => {
     let  koderFullName = `${name} ${lastName}`;
 
     let koderListItem = document.createElement('li');
+    koderListItem.classList.add( 'list-group-item' )
     let koderItemText = document.createTextNode(koderFullName);
     koderListItem.append(koderItemText);
     
