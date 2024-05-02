@@ -48,19 +48,33 @@ const getKoders = async () => {
 const  createKoder = (koderObject) => {
     let { name, lastname, key } = koderObject
     let koderItem = document.createElement('li')
-    koderItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center')
-    koderItem.innerText=`${name} ${lastname}`
+    koderItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center', 'gap-3')
     
+    let koderName = document.createElement('span');
+    koderName.classList.add('flex-grow-1')
+    koderName.innerText = `${name} ${lastname}`    
+    
+    //boton editar koder
+    let editButton = document.createElement('button');
+    editButton.classList.add("btn", "btn-primary", "text-center")
+    editButton.innerHTML="&#x270E"
+
+    editButton.addEventListener( 'click', ()=> {
+        console.log('hola')
+    })
+
+    //boton eliminar koder
     let deleteButton = document.createElement('button')
     deleteButton.classList.add('btn','btn-danger', 'text-center')
     deleteButton.innerText="Borrar"
+
     deleteButton.addEventListener('click', async () => {
         console.log(key)
         await deleteKoderById(key)
-        await getKoders()
+
     })
 
-    koderItem.append(deleteButton)
+    koderItem.append(koderName, editButton, deleteButton)
 
     return  koderItem;
 }
