@@ -71,6 +71,7 @@ const  createKoder = (koderObject) => {
     deleteButton.addEventListener('click', async () => {
         console.log(key)
         await deleteKoderById(key)
+        await getKoders()
 
     })
 
