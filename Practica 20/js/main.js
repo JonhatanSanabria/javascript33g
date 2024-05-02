@@ -20,6 +20,15 @@ const getKoders = async () => {
         await getKoders()
     }
     
+    const editKoderById = async (koderKey, newData) => {
+        let response  =  await fetch(`https://javascript33g-cd62a-default-rtdb.firebaseio.com/koders/${koderKey}/.json`,{
+            method: 'PUT',
+            body: JSON.stringify(newData)
+        })
+        let data = await response.json();
+        console.log(data)        
+    }
+
     const deleteKoderById = async (koderkey) => {
         let response = await fetch(`https://javascript33g-cd62a-default-rtdb.firebaseio.com/koders/${koderkey}/.json`,{
             method: 'DELETE'
@@ -31,6 +40,10 @@ const getKoders = async () => {
 
     // Empezamos por activar el botón
     let saveKoderBtn = document.getElementById('save-koder-button')
+
+    // Registro de la modal de edicion
+    const editKoderModal = new bootstrap.Modal(document.getElementById('edit-koder-modal'))
+
     saveKoderBtn.addEventListener('click', async () => {
     let inputs = document.querySelectorAll('#koder-form input')
     let koderObject  = {}
@@ -42,6 +55,21 @@ const getKoders = async () => {
     await getKoders()
     // Y hacemos que al dar click se borre el formulario
     inputs.forEach((input) => (input.value=''))
+})
+let saveChangesBtn = document.getElementById('save-changes-btn')
+saveChangesBtn.addEventListener('click',async (event)=>{
+    console.log('guardando cambios')
+    let key = event.target.dataset.koderKey
+    let editFields = document.querySelectorAll('#edit-koder-form input')
+    let editedKoder = {}
+    editFields.forEach(({name, value}) => {
+        editedKoder[name] = value
+    })
+    await editKoderById(key, editedKoder)
+    await getKoders()
+    editKoderModal.hide();
+    console.log(key)
+    console.log(editedKoder)
 })
 
 // Crear un objeto de koder basado en un array
@@ -60,7 +88,11 @@ const  createKoder = (koderObject) => {
     editButton.innerHTML="&#x270E"
 
     editButton.addEventListener( 'click', ()=> {
-        console.log('hola')
+
+        document.getElementById( 'edit-name' ).value = name
+        document.getElementById( 'edit-lastname' ).value = lastname
+        document.getElementById( 'save-changes-btn' ).dataset.koderKey = key
+        editKoderModal.show()
     })
 
     //boton eliminar koder
